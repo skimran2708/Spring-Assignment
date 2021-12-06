@@ -17,7 +17,12 @@
 
 	<properties>
 		<java.version>1.8</java.version>
+<<<<<<< HEAD
 		<sonar.projectKey>skimran2708_Spring-Assignment</sonar.projectKey>
+=======
+		<sonar.organization>skimran2708</sonar.organization>
+  		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
+>>>>>>> aa45d4befca1ba5ab0e3a838ed6f052c371feece
 	</properties>
 
 	<dependencies>
