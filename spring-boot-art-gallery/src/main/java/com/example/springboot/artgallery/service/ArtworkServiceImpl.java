@@ -17,7 +17,7 @@ public class ArtworkServiceImpl implements ArtworkService {
     }
 
     @Override
-    public Artwork findById(int theId) {
+    public Artwork findArtworkById(int theId) {
         Optional<Artwork> result = artworkRepository.findById(theId);
 
         Artwork theArtwork = null;
@@ -34,12 +34,14 @@ public class ArtworkServiceImpl implements ArtworkService {
     }
 
     @Override
-    public void save(Artwork theArtwork) {
+    public Artwork saveArtwork(Artwork theArtwork) {
         artworkRepository.save(theArtwork);
+
+        return theArtwork;
     }
 
     @Override
-    public void deleteById(int theId) {
+    public void deleteArtworkById(int theId) {
         artworkRepository.deleteById(theId);
     }
 }

@@ -48,7 +48,7 @@ public class UsersServiceImpl implements UsersService{
     public void save(Users theUser) {
 
         String encodedPassword = passwordEncoder.encode(theUser.getPassword());
-        theUser.setPassword("{bcrypt}"+encodedPassword);
+        theUser.setPassword(encodedPassword);   //{bcrypt} is added if required
 
         usersRepository.save(theUser);
     }

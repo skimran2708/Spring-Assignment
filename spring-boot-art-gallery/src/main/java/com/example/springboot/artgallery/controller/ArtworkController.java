@@ -32,7 +32,7 @@ public class ArtworkController {
                               Model theModel) {
 
         // get the artwork from the service
-        Artist theArtist = artistService.findById(theArtistId);
+        Artist theArtist = artistService.findArtistById(theArtistId);
         List<Artwork> theArtworks = theArtist.getArtworks();
         // set artwork as a model attribute to pre-populate the form
         theModel.addAttribute("artworks", theArtworks);
@@ -58,7 +58,7 @@ public class ArtworkController {
                                           Model theModel) {
 
         // get the artwork from the service
-        Artwork theArtwork = artworkService.findById(theId);
+        Artwork theArtwork = artworkService.findArtworkById(theId);
 
         // set artist as a model attribute to pre-populate the form
         theModel.addAttribute("artwork", theArtwork);
@@ -69,27 +69,27 @@ public class ArtworkController {
     }
 
     @PostMapping("/save")
-    public String save(@RequestParam("artistId") int theArtistId, @Valid @ModelAttribute("artwork") Artwork theArtwork, BindingResult bindingResult) {
+    public String saveArtwork(@RequestParam("artistId") int theArtistId, @Valid @ModelAttribute("artwork") Artwork theArtwork, BindingResult bindingResult) {
 
         // save the artWork
 
         if(bindingResult.hasErrors())
             return "artworks/artwork-form";
 
-        Artist theArtist = artistService.findById(theArtistId);
+        Artist theArtist = artistService.findArtistById(theArtistId);
         theArtist.addArtwork(theArtwork);
 
-        artworkService.save(theArtwork);
+        artworkService.saveArtwork(theArtwork);
 
         // use a redirect to prevent duplicate submissions
         return "redirect:/artworks/list?artistId="+theArtistId;
     }
 
     @GetMapping("/delete")
-    public String delete(@RequestParam("artistId") int theArtistId, @RequestParam("artworkId") int theId) {
+    public String deleteArtwork(@RequestParam("artistId") int theArtistId, @RequestParam("artworkId") int theId) {
 
         // delete the artist
-        artworkService.deleteById(theId);
+        artworkService.deleteArtworkById(theId);
 
         // redirect
         return "redirect:/artworks/list?artistId="+theArtistId;

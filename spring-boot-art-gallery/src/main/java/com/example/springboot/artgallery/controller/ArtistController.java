@@ -40,7 +40,7 @@ public class ArtistController {
     public String listArtists(Model theModel) {
 
         // get artists from database
-        List<Artist> theArtists = artistService.findAll();
+        List<Artist> theArtists = artistService.findAllArtists();
 
         //add to spring model
         theModel.addAttribute("artists", theArtists);
@@ -53,7 +53,7 @@ public class ArtistController {
                                     Model theModel) {
 
         // get the artist from the service
-        Artist theArtist = artistService.findById(theId);
+        Artist theArtist = artistService.findArtistById(theId);
 
         // set artist as a model attribute to pre-populate the form
         theModel.addAttribute("artist", theArtist);
@@ -80,7 +80,7 @@ public class ArtistController {
                                           Model theModel) {
 
         // get the artist from the service
-        Artist theArtist = artistService.findById(theId);
+        Artist theArtist = artistService.findArtistById(theId);
 
         // set artist as a model attribute to pre-populate the form
         theModel.addAttribute("artist", theArtist);
@@ -92,17 +92,15 @@ public class ArtistController {
     }
 
     @PostMapping("/save")
-    public String save(@Valid @ModelAttribute("artist") Artist theArtist, BindingResult bindingResult, Model theModel) {
+    public String saveArtist(@Valid @ModelAttribute("artist") Artist theArtist, BindingResult bindingResult, Model theModel) {
 
         if (bindingResult.hasErrors()) {
             theModel.addAttribute("artStyleList", artStyleList);
             return "artists/artist-form";
         }
-
-
         else {
             // save the artist
-            artistService.save(theArtist);
+            artistService.saveArtist(theArtist);
 
             // use a redirect to prevent duplicate submissions
             return "redirect:/artists/list";
@@ -110,10 +108,10 @@ public class ArtistController {
     }
 
     @GetMapping("/delete")
-    public String delete(@RequestParam("artistId") int theId) {
+    public String deleteArtist(@RequestParam("artistId") int theId) {
 
         // delete the artist
-        artistService.deleteById(theId);
+        artistService.deleteArtistById(theId);
 
         // redirect
         return "redirect:/artists/list";

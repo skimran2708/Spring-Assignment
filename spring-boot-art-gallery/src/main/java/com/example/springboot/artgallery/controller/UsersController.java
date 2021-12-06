@@ -65,7 +65,7 @@ public class UsersController {
 
         String username = authentication.getName();
         // get the artist from the service
-        Artist theArtist = artistService.findByEmail(username);
+        Artist theArtist = artistService.findArtistByEmail(username);
 
         // send over to our form
         return "redirect:/artists/showArtistDetails?artistId="+theArtist.getId();

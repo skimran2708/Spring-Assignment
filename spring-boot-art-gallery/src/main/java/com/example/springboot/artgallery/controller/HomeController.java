@@ -16,23 +16,19 @@ public class HomeController {
 
     }
 
-    // create a mapping for "/hello"
-
+    // create a mapping for "/home"
     @GetMapping("/home")
     public String sayHello(Model theModel) {
 
         theModel.addAttribute("theDate", new java.util.Date());
 
-        return "helloworld";
+        return "home-page";
     }
 
     @GetMapping("/error")
     public String error() {
         return "error";
     }
-
-
-
 
 }
 

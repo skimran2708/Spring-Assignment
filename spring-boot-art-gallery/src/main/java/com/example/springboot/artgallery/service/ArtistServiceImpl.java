@@ -2,7 +2,6 @@ package com.example.springboot.artgallery.service;
 
 import com.example.springboot.artgallery.dao.ArtistRepository;
 import com.example.springboot.artgallery.entity.Artist;
-import com.example.springboot.artgallery.entity.Users;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,12 +18,12 @@ public class ArtistServiceImpl implements ArtistService{
     }
 
     @Override
-    public List<Artist> findAll() {
+    public List<Artist> findAllArtists() {
         return artistRepository.findAll();
     }
 
     @Override
-    public Artist findById(int theId) {
+    public Artist findArtistById(int theId) {
         Optional<Artist> result = artistRepository.findById(theId);
 
         Artist theArtist = null;
@@ -41,7 +40,7 @@ public class ArtistServiceImpl implements ArtistService{
     }
 
     @Override
-    public Artist findByEmail(String username) {
+    public Artist findArtistByEmail(String username) {
         Optional<Artist> result = artistRepository.findByEmail(username);
 
         Artist theArtist = null;
@@ -58,12 +57,13 @@ public class ArtistServiceImpl implements ArtistService{
     }
 
     @Override
-    public void save(Artist theArtist) {
+    public Artist saveArtist(Artist theArtist) {
         artistRepository.save(theArtist);
+        return theArtist;
     }
 
     @Override
-    public void deleteById(int theId) {
+    public void deleteArtistById(int theId) {
         artistRepository.deleteById(theId);
     }
 
