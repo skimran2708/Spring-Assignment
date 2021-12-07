@@ -39,6 +39,7 @@ public class Artist {
     private String lastName;
 
     @Email(regexp = "^(.+)@(.+)$", message = "Invalid email")
+    @NotEmpty(message = "Email should not be null")
     @Column(name="email", unique = true)
     private String email;
 
@@ -61,6 +62,16 @@ public class Artist {
 
     public Artist() {
 
+    }
+
+    public Artist(int id, String firstName, String lastName, String email, String age, String birthPlace, String artStyle) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.age = age;
+        this.birthPlace = birthPlace;
+        this.artStyle = artStyle;
     }
 
     public Artist(String firstName, String lastName, String email, String age, String birthPlace, String artStyle) {
