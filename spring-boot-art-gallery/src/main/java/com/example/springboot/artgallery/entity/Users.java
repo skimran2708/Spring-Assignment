@@ -13,7 +13,6 @@ public class Users {
     @Id
     @Column(name="username", unique = true)
     @NotEmpty(message = "Should not be empty")
-    @Email(regexp = "^(.+)@(.+)$", message = "Invalid email")
     private String username;
 
     @Column(name="password")

@@ -12,7 +12,7 @@ public interface ArtistService {
 
     public Artist findArtistByEmail(String theUsername);
 
-    public Artist saveArtist(Artist theArtist);
+    public void saveArtist(Artist theArtist);
 
     public void deleteArtistById(int theId);
 }

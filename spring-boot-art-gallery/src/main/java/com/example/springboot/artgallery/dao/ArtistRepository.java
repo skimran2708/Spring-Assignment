@@ -9,5 +9,6 @@ import java.util.Optional;
 @RepositoryRestResource(path = "artists")
 public interface ArtistRepository extends JpaRepository<Artist, Integer> {
 
-    Optional<Artist> findByEmail(String username);
+    Optional<Artist> findByEmail(String email);
+
 }

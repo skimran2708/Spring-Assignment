@@ -38,7 +38,6 @@ public class Artist {
     @Column(name="last_name")
     private String lastName;
 
-    @Email(regexp = "^(.+)@(.+)$", message = "Invalid email")
     @NotEmpty(message = "Email should not be null")
     @Column(name="email", unique = true)
     private String email;

@@ -57,14 +57,14 @@ public class ArtistServiceImpl implements ArtistService{
     }
 
     @Override
-    public Artist saveArtist(Artist theArtist) {
+    public void saveArtist(Artist theArtist) {
         artistRepository.save(theArtist);
-        return theArtist;
     }
 
     @Override
     public void deleteArtistById(int theId) {
         artistRepository.deleteById(theId);
+
     }
 
 }

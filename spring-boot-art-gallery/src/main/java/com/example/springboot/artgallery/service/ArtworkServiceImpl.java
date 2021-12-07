@@ -34,10 +34,8 @@ public class ArtworkServiceImpl implements ArtworkService {
     }
 
     @Override
-    public Artwork saveArtwork(Artwork theArtwork) {
+    public void saveArtwork(Artwork theArtwork) {
         artworkRepository.save(theArtwork);
-
-        return theArtwork;
     }
 
     @Override

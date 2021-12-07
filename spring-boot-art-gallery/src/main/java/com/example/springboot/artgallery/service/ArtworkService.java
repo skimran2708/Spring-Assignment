@@ -6,7 +6,7 @@ public interface ArtworkService {
 
     public Artwork findArtworkById(int theId);
 
-    public Artwork saveArtwork(Artwork theArtwork);
+    public void saveArtwork(Artwork theArtwork);
 
     public void deleteArtworkById(int theId);
 }
