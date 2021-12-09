@@ -2,6 +2,7 @@ package com.example.springboot.artgallery.service;
 
 import com.example.springboot.artgallery.dao.ArtistRepository;
 import com.example.springboot.artgallery.entity.Artist;
+import com.example.springboot.artgallery.exception.MyException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -33,7 +34,7 @@ public class ArtistServiceImpl implements ArtistService{
         }
         else {
             // we didn't find the artist
-            throw new RuntimeException("Did not find Artist id - " + theId);
+            throw new MyException("Did not find Artist id - " + theId);
         }
 
         return theArtist;
@@ -50,7 +51,7 @@ public class ArtistServiceImpl implements ArtistService{
         }
         else {
             // we didn't find the artist
-            throw new RuntimeException("Did not find Artist - " + username);
+            throw new MyException("Did not find Artist - " + username);
         }
 
         return theArtist;

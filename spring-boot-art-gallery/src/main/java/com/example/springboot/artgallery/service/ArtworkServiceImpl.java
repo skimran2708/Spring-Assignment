@@ -2,6 +2,7 @@ package com.example.springboot.artgallery.service;
 
 import com.example.springboot.artgallery.dao.ArtworkRepository;
 import com.example.springboot.artgallery.entity.Artwork;
+import com.example.springboot.artgallery.exception.MyException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,7 +28,7 @@ public class ArtworkServiceImpl implements ArtworkService {
         }
         else {
             // we didn't find the artwork
-            throw new RuntimeException("Did not find Artwork id - " + theId);
+            throw new MyException("Did not find Artwork id - " + theId);
         }
 
         return theArtwork;

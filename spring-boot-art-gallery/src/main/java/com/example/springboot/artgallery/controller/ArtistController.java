@@ -1,5 +1,7 @@
 package com.example.springboot.artgallery.controller;
 
+import com.example.springboot.artgallery.converter.ArtistConvertor;
+import com.example.springboot.artgallery.dto.ArtistDto;
 import com.example.springboot.artgallery.entity.Artist;
 import com.example.springboot.artgallery.service.ArtistService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +30,11 @@ public class ArtistController {
         artStyleList.add("Symbolism");
     }
 
-    private ArtistService artistService;
+    private final ArtistService artistService;
+
+    static final String ARTIST="artist";
+    static final String ARTSTYLELIST_CONST="artStyleList";
+    static final String VIEW_PAGE="artists/artist-form";
 
     @Autowired
     public ArtistController(ArtistService theArtistService) {
@@ -56,7 +62,7 @@ public class ArtistController {
         Artist theArtist = artistService.findArtistById(theId);
 
         // set artist as a model attribute to pre-populate the form
-        theModel.addAttribute("artist", theArtist);
+        theModel.addAttribute(ARTIST, theArtist);
 
         // send over to our form
         return "artists/artist-details";
@@ -68,11 +74,11 @@ public class ArtistController {
         // create model attribute to bind form data
         Artist theArtist = new Artist();
 
-        theModel.addAttribute("artist", theArtist);
+        theModel.addAttribute(ARTIST, theArtist);
 
-        theModel.addAttribute("artStyleList", artStyleList);
+        theModel.addAttribute(ARTSTYLELIST_CONST, artStyleList);
 
-        return "artists/artist-form";
+        return VIEW_PAGE;
     }
 
     @GetMapping("/showFormForUpdate")
@@ -83,22 +89,25 @@ public class ArtistController {
         Artist theArtist = artistService.findArtistById(theId);
 
         // set artist as a model attribute to pre-populate the form
-        theModel.addAttribute("artist", theArtist);
+        theModel.addAttribute(ARTIST, theArtist);
 
-        theModel.addAttribute("artStyleList", artStyleList);
+        theModel.addAttribute(ARTSTYLELIST_CONST, artStyleList);
 
         // send over to our form
-        return "artists/artist-form";
+        return VIEW_PAGE;
     }
 
     @PostMapping("/save")
-    public String saveArtist(@Valid @ModelAttribute("artist") Artist theArtist, BindingResult bindingResult, Model theModel) {
+    public String saveArtist(@Valid @ModelAttribute("artist") ArtistDto artistDto, BindingResult bindingResult, Model theModel) {
 
         if (bindingResult.hasErrors()) {
-            theModel.addAttribute("artStyleList", artStyleList);
-            return "artists/artist-form";
+            theModel.addAttribute(ARTSTYLELIST_CONST, artStyleList);
+            return VIEW_PAGE;
         }
         else {
+            //convert dto to entity
+            Artist theArtist = new ArtistConvertor().dtoToEntity(artistDto);
+
             // save the artist
             artistService.saveArtist(theArtist);
 
