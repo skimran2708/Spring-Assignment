@@ -10,7 +10,7 @@ import java.util.Optional;
 
 @Service
 public class ArtworkServiceImpl implements ArtworkService {
-    private ArtworkRepository artworkRepository;
+    private final ArtworkRepository artworkRepository;
 
     @Autowired
     public ArtworkServiceImpl(ArtworkRepository theArtworkRepository) {

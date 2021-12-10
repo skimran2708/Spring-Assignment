@@ -1,10 +1,8 @@
-package com.example.springboot.artgallery;
+package com.example.springboot.artgallery.controller;
 
-import com.example.springboot.artgallery.controller.HomeController;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.util.NestedServletException;
@@ -48,11 +46,9 @@ class HomeControllerTests {
     }
 
     @Test
-    void accessDeniedPageView() throws Exception {
-        Exception exception = assertThrows(NestedServletException.class, () -> {
-            mockMvc.perform(get("/access-denied"))
-                    .andExpect(status().isNotFound());
-        });
+    void accessDeniedPageView() {
+        Exception exception = assertThrows(NestedServletException.class, () -> mockMvc.perform(get("/access-denied"))
+                .andExpect(status().isNotFound()));
         String expectedMessage = "Request processing failed; nested exception is com.example.springboot.artgallery.exception.MyException: Access Denied";
         String actualMessage = exception.getMessage();
         assertEquals(expectedMessage,actualMessage);

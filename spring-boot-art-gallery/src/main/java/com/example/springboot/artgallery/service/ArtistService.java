@@ -6,13 +6,13 @@ import java.util.List;
 
 public interface ArtistService {
 
-    public List<Artist> findAllArtists();
+    List<Artist> findAllArtists();
 
-    public Artist findArtistById(int theId);
+    Artist findArtistById(int theId);
 
-    public Artist findArtistByEmail(String theUsername);
+    Artist findArtistByEmail(String theUsername);
 
-    public void saveArtist(Artist theArtist);
+    void saveArtist(Artist theArtist);
 
-    public void deleteArtistById(int theId);
+    void deleteArtistById(int theId);
 }

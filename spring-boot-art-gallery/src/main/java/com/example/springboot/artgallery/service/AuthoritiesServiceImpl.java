@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class AuthoritiesServiceImpl implements AuthoritiesService{
 
-    private AuthoritiesRepository authoritiesRepository;
+    private final AuthoritiesRepository authoritiesRepository;
 
     @Autowired
     public AuthoritiesServiceImpl(AuthoritiesRepository theAuthoritiesRepository) {

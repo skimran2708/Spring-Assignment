@@ -1,6 +1,5 @@
-package com.example.springboot.artgallery;
+package com.example.springboot.artgallery.controller;
 
-import com.example.springboot.artgallery.controller.ArtistController;
 import com.example.springboot.artgallery.dao.ArtistRepository;
 import com.example.springboot.artgallery.dto.ArtistDto;
 import com.example.springboot.artgallery.entity.Artist;

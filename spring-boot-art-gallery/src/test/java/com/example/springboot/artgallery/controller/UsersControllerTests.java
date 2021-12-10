@@ -1,8 +1,7 @@
-package com.example.springboot.artgallery;
+package com.example.springboot.artgallery.controller;
 
 import com.example.springboot.artgallery.dto.UsersDto;
 import org.springframework.security.core.Authentication;
-import com.example.springboot.artgallery.controller.UsersController;
 import com.example.springboot.artgallery.dao.ArtistRepository;
 import com.example.springboot.artgallery.entity.Users;
 import com.example.springboot.artgallery.service.ArtistService;
@@ -13,16 +12,12 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.security.test.context.support.WithUserDetails;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import java.security.Principal;
-import java.util.Optional;
 
 import static org.hamcrest.Matchers.hasProperty;
 import static org.hamcrest.Matchers.is;
-import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
